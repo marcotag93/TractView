@@ -96,7 +96,7 @@ View tractography files (`.trk`, `.tck`, `.trx`) directly in VS Code with intera
 
 ```bash
 # Clone the repository
-git clone https://github.com/marcotag93/tractview.git
+git clone https://github.com/marcotag93/TractView.git
 cd tractview
 
 # Install dependencies
@@ -155,3 +155,4 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 - [TRX Specification](https://github.com/tee-ar-ex/trx-spec) — TRX format specification
 
 ---
+
