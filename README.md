@@ -155,5 +155,3 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 - [TRX Specification](https://github.com/tee-ar-ex/trx-spec) — TRX format specification
 
 ---
-
-
