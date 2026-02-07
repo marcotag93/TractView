@@ -1,0 +1,129 @@
+{
+  "name": "tractview",
+  "displayName": "TractView - TRK/TCK/TRX Viewer",
+  "description": "View tractography files (.trk, .tck, .trx) directly in VS Code with interactive 3D visualization",
+  "version": "1.2.0",
+  "publisher": "marcotag93",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Visualization",
+    "Other"
+  ],
+  "keywords": [
+    "tractography",
+    "trk",
+    "tck",
+    "trx",
+    "trackvis",
+    "mrtrix",
+    "neuroimaging",
+    "diffusion",
+    "mri",
+    "brain",
+    "3d"
+  ],
+  "icon": "media/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marcotag93/TractView"
+  },
+  "main": "./dist/extension.js",
+  "activationEvents": [],
+  "contributes": {
+    "customEditors": [
+      {
+        "viewType": "tractview.trkViewer",
+        "displayName": "Tractography Viewer",
+        "selector": [
+          {
+            "filenamePattern": "*.trk"
+          },
+          {
+            "filenamePattern": "*.tck"
+          },
+          {
+            "filenamePattern": "*.trx"
+          }
+        ],
+        "priority": "default"
+      }
+    ],
+    "configuration": {
+      "title": "TractView",
+      "properties": {
+        "tractview.maxStreamlines": {
+          "type": "number",
+          "default": 100000,
+          "minimum": 10,
+          "maximum": 200000,
+          "description": "Maximum number of streamlines to render"
+        },
+        "tractview.skipThreshold": {
+          "type": "number",
+          "default": 15000,
+          "minimum": 1000,
+          "maximum": 50000,
+          "description": "When streamline count exceeds this, automatic skip sampling is enabled"
+        },
+        "tractview.backgroundColor": {
+          "type": "string",
+          "default": "#2d2d2d",
+          "description": "Background color for the 3D viewer"
+        },
+        "tractview.defaultRenderMode": {
+          "type": "string",
+          "enum": [
+            "lines",
+            "tubes"
+          ],
+          "default": "lines",
+          "description": "Default rendering mode for streamlines"
+        },
+        "tractview.tubeRadius": {
+          "type": "number",
+          "default": 0.3,
+          "minimum": 0.1,
+          "maximum": 2.0,
+          "description": "Radius of tubes when rendering in tube mode"
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "tractview.resetView",
+        "title": "TractView: Reset Camera View"
+      },
+      {
+        "command": "tractview.toggleRenderMode",
+        "title": "TractView: Toggle Lines/Tubes"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/node": "20.10.0",
+    "@types/three": "0.160.0",
+    "@types/vscode": "1.85.0",
+    "@typescript-eslint/eslint-plugin": "6.13.0",
+    "@typescript-eslint/parser": "6.13.0",
+    "css-loader": "6.8.1",
+    "eslint": "8.54.0",
+    "style-loader": "3.3.3",
+    "ts-loader": "9.5.1",
+    "typescript": "5.3.2",
+    "webpack": "5.89.0",
+    "webpack-cli": "5.1.4"
+  },
+  "dependencies": {
+    "three": "0.160.0"
+  }
+}
